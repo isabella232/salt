@@ -45,8 +45,8 @@ def _get_api():
   if HAS_CHEF:
     api_host = __salt__['config.option']('chef.api.host', 'localhost')
     api_port = __salt__['config.option']('chef.api.port', '4000')
-    api_key = __salt__['config.option']('chef.api.key')
-    api_user = __salt__['config.option']('chef.api.user')
+    api_key = __salt__['config.option']('chef.api.key', '/etc/chef/webui.pem')
+    api_user = __salt__['config.option']('chef.api.user', 'chef-webui')
 
     return chef.ChefAPI('http://%s:%s' % (api_host, api_port), api_key, api_user)
 
